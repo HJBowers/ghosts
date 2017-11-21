@@ -8,23 +8,24 @@ import IconButton from './IconButton'
 
 export default function ActionButtons(props) {
   const {
-    isFinishRecorded, 
-    isRecording, 
-    playPauseIcon, 
-    playPauseHandler, 
+    isFinishRecorded,
+    isRecording,
+    playPauseIcon,
+    playPauseHandler,
     stopRecording
   } = props
+  
   return (
     <View style={styles.buttonGroup}>
-      <IconButton 
-        iconName='stop-circle-o' 
-        isDisabled={isFinishRecorded || !isRecording} 
-        onPressHandler={stopRecording} 
+      <IconButton
+        iconName='stop-circle-o'
+        isDisabled={isFinishRecorded || !isRecording}
+        onPressHandler={stopRecording}
       />
-      <IconButton 
+      <IconButton
         iconName={playPauseIcon}
-        isDisabled={!isFinishRecorded || isRecording} 
-        onPressHandler={playPauseHandler} 
+        isDisabled={!isFinishRecorded || isRecording}
+        onPressHandler={playPauseHandler}
       />
     </View>
   )
