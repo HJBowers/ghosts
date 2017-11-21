@@ -1,4 +1,4 @@
-# Ghost
+# Ghosts
 ### Hannah, Ryan, Michael
 
 ## Project Description
