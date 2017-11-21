@@ -9,7 +9,9 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-native-maps": "^0.17.1"
+    "react-native-audio-toolkit": "^1.0.6",
+    "react-native-maps": "^0.17.1",
+    "react-native-sound": "^0.10.4"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
