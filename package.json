@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-audio-player-recorder": "^2.0.0",
     "react-native-maps": "^0.17.1"
   },
   "devDependencies": {

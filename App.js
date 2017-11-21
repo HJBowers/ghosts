@@ -7,6 +7,7 @@ import {
   Dimensions
 } from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'
+import { AudioPlayer, AudioRecorder } from 'react-native-audio-player-recorder'
 import Aubergine from './mapStyles/aubergine.json';
 
 const instructions = Platform.select({
@@ -26,52 +27,61 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class App extends Component<{}> {
 
-    constructor() {
-      super();
-      this.watchID = null;
+  constructor() {
+    super();
+    this.watchID = null;
 
-      this.state = {
-        region: {
-          latitude: LATITUDE,
-          longitude: LONGITUDE,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
-        }
-      };
-    }
+    this.state = {
+      region: {
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      }
+    };
+  }
 
-    componentDidMount() {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.setState({
-            region: {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              latitudeDelta: LATITUDE_DELTA,
-              longitudeDelta: LONGITUDE_DELTA,
-            }
-          });
-        },
-      (error) => console.log(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-      );
-      this.watchID = navigator.geolocation.watchPosition(
-        position => {
-          this.setState({
-            region: {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              latitudeDelta: LATITUDE_DELTA,
-              longitudeDelta: LONGITUDE_DELTA,
-            }
-          });
-        }
-      );
-    }
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+        });
+      },
+    (error) => console.log(error.message),
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+    this.watchID = navigator.geolocation.watchPosition(
+      position => {
+        this.setState({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+        });
+      }
+    );
+  }
 
-    componentWillUnmount() {
-      navigator.geolocation.clearWatch(this.watchID);
-    }
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
+
+
+  _getAvailableOutputs() {
+    AudioPlayer.getOutputs(outputs => {
+      console.log('outputs========', outputs)
+    })
+  }
+
+
 
 
   render() {
@@ -101,6 +111,7 @@ export default class App extends Component<{}> {
             coordinate={ this.state.region }
           />
         </MapView>
+        <Button className
       </View>
     )
   }
