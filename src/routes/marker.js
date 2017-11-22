@@ -3,6 +3,9 @@ const Query = require('../db/queries')
 
 const router = require('express').Router();
 
+router.get('/', (request, response) => {
+  response.send('Hello')
+})
 
 router.get("/:id", (request, response) => {
   const ghost_id = request.params.id
