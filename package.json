@@ -14,7 +14,16 @@
     "pg": "^7.4.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-native-maps": "^0.17.1"
+    "react-native-action-button": "^2.8.2",
+    "react-native-audio-player-recorder": "^2.0.0",
+    "react-native-audio-toolkit": "^1.0.6",
+    "react-native-button": "^2.1.0",
+    "react-native-maps": "^0.17.1",
+    "react-native-router-flux": "^4.0.0-beta.24",
+    "react-native-slider": "^0.11.0",
+    "react-native-sound": "^0.10.4",
+    "react-native-vector-icons": "^4.4.2",
+    "react-timer-mixin": "^0.13.3"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
