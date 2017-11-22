@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'
 import { View, Dimensions, StyleSheet} from 'react-native';
+var TimerMixin = require('react-timer-mixin');
 
 import Aubergine from '../mapStyles/aubergine.json';
 
@@ -25,6 +26,16 @@ export default class App extends Component<{}> {
         longitudeDelta: LONGITUDE_DELTA,
       }
     };
+  }
+
+  componentDidMount() {
+    this.setInterval( () => {
+      let d = new Date();
+      let result = d.getHours() + d.getMinutes() / MINUTES_IN_HOUR;
+      this.setState({
+        timeLineTop: result
+      })
+    }, 300);
   }
 
   componentDidMount() {
@@ -62,7 +73,6 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-      <View>
         <MapView
           provider={ PROVIDER_GOOGLE }
           style={ styles.container }
@@ -72,19 +82,15 @@ export default class App extends Component<{}> {
           onRegionChange={ region => this.setState({ region }) }
           onRegionChangeComplete={ region => this.setState({ region }) }
         >
-          <MapView.Marker
-            coordinate={ this.state.region }
-          />
+          <MapView.Marker coordinate={ this.state.region }/>
         </MapView>
-      </View>
     )
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    height: '80%',
+    height: '50%',
     width: '100%',
   }
 });
